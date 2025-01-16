@@ -1,0 +1,25 @@
+name: Deploy
+
+# Trigger the workflow on push and
+# pull request events on the master branch
+on:
+  push:
+    branches: ["master"] bases on the github branch
+  pull_request:
+    branches: ["master"]
+
+# Authenticate to the the server via ssh
+# and run our deployment script
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master 
+        with:
+          host: ${{ secrets.HOST }}  add host
+          username: ${{ secrets.USERNAME }}  add username of the server IP
+          port: ${{ secrets.PORT }} add port POST
+          key: ${{ secrets.SSHKEY }} add private ssh key  
+          script: "cd ~/nextjs/test_project && ./.scripts/deploy.sh"
