@@ -18,8 +18,8 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@master 
         with:
-          host: ${{ secrets.HOST }}  add host
-          username: ${{ secrets.USERNAME }}  add username of the server IP
-          port: ${{ secrets.PORT }} add port POST
-          key: ${{ secrets.SSHKEY }} add private ssh key  
+          host: ${{ secrets.HOST }}   
+          username: ${{ secrets.USERNAME }}   
+          port: ${{ secrets.PORT }}  
+          key: ${{ secrets.SSHKEY }}  
           script: "cd ~/nextjs/test_project && ./.scripts/deploy.sh"
