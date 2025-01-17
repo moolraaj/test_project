@@ -21,5 +21,5 @@ jobs:
           host: ${{ secrets.HOST }}   
           username: ${{ secrets.USERNAME }}   
           port: ${{ secrets.PORT }}  
-          password: ${{ secrets.SSHKEY }}  
+          password: ${{ secrets.PASSWORD }}  
           script: "cd ~/nextjs/test_project && ./.scripts/deploy.sh"

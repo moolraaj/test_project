@@ -1,19 +1,22 @@
 #!/bin/bash
-set -e
+set -e # Exit on any error.
 
-echo "Deployment started..."
+echo "🚀 Deployment started..."
 
 # Pull the latest version of the app
-git pull origin master
-echo "New changes copied to server !"
+echo "🔄 Pulling latest changes from GitHub..."
+git pull origin master || { echo "❌ Git pull failed."; exit 1; }
 
-echo "Installing Dependencies..."
-npm install --yes
+# Install dependencies with legacy peer deps
+echo "📦 Installing dependencies..."
+npm install --legacy-peer-deps || { echo "❌ npm install failed."; exit 1; }
 
-echo "Creating Production Build..."
-npm run build
+# Build the project
+echo "🔧 Creating production build..."
+npm run build || { echo "❌ Build process failed."; exit 1; }
 
-echo "PM2 Reload"
-pm2 reload app_name/id
+# Reload PM2
+echo "♻️ Reloading application with PM2..."
+pm2 reload myapp || { echo "❌ PM2 reload failed."; exit 1; }
 
-echo "Deployment Finished!"
+echo "✅ Deployment finished successfully!"
