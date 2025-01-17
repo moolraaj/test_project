@@ -17,6 +17,6 @@ npm run build || { echo "❌ Build process failed."; exit 1; }
 
 # Reload PM2
 echo "♻️ Reloading application with PM2..."
-pm2 reload 0 || { echo "❌ PM2 reload failed."; exit 1; }
+pm2 reload myapp || { echo "❌ PM2 reload failed."; exit 1; }
 
 echo "✅ Deployment finished successfully!"
