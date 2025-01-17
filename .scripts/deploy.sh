@@ -8,7 +8,7 @@ git pull origin master
 echo "New changes copied to server !"
 
 echo "Installing Dependencies..."
-npm install --yes
+npm install --legacy-peer-deps
 
 echo "Creating Production Build..."
 npm run build
