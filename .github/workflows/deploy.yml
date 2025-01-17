@@ -17,7 +17,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
-          ssh_option: "-o StrictHostKeyChecking=no"
           script: |
             cd ~/nextjs/test_project
             ./scripts/deploy.sh
